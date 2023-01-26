@@ -1,9 +1,7 @@
 const express = require("express");
+const tourController = require("../controllers/tourController");
 const router = express.Router();
 
-router.route("/").get((req, res) => {
-  res.status(200).json({
-    status: "success, you are in the tours route",
-  });
-});
+router.route("/").get(tourController.getAllTours);
+router.route("/").post(tourController.createTour);
 module.exports = router;
