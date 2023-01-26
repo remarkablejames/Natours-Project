@@ -22,3 +22,21 @@ exports.createTour = async (req, res) => {
     data: newTour,
   });
 };
+
+exports.updateTour = async (req, res) => {
+  const newTour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
+  res.status(200).json({
+    status: "success, you successfully updated a tour",
+    data: newTour,
+  });
+};
+
+exports.deleteTour = async (req, res) => {
+  await Tour.findByIdAndDelete(req.params.id);
+  res.status(204).json({
+    status: "success, you successfully deleted a tour",
+  });
+};
