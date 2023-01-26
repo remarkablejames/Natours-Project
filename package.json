@@ -1,34 +1,31 @@
 {
-  "name": "clone",
+  "name": "natours-project",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "A tour booking and review web application",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js",
-    "start:prod": "NODE_ENV=production",
-    "debug": "ndb server.js"
+    "start": "nodemon server.js"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/remarkablejames/Natours-Project.git"
+  },
+  "keywords": [
+    "Nodejs",
+    "mongodb",
+    "express"
+  ],
+  "author": "James Niyongira (remarkablejames)",
   "license": "ISC",
-  "dependencies": {
-    "dotenv": "^16.0.0",
-    "express": "^4.17.3",
-    "mongoose": "^6.2.8",
-    "morgan": "^1.10.0",
-    "ndb": "^1.1.5",
-    "slugify": "^1.6.5",
-    "validator": "^13.7.0"
+  "bugs": {
+    "url": "https://github.com/remarkablejames/Natours-Project/issues"
   },
-  "devDependencies": {
-    "eslint": "^8.11.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.29.4",
-    "prettier": "^2.6.0"
+  "homepage": "https://github.com/remarkablejames/Natours-Project#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.9.0",
+    "morgan": "^1.10.0"
   }
 }

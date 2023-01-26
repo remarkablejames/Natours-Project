@@ -1,16 +1,12 @@
-//NATOURS PROJECT
-//developed independently by Niyongira James
-
 const express = require("express");
-const tourRoutes = require("./routes/tourRoutes");
-
+const morgan = require("morgan");
 const app = express();
 
-// HANDLING ROUTES
-app.use("/api/v1/tours", tourRoutes);
+app.use(express.json());
+app.use(morgan("dev"));
 
-//creating a server
-
-app.listen(3000, () => {
-  console.log("server started");
+app.get("/", (req, res) => {
+  res.send("Hello World!");
 });
+
+module.exports = app;
