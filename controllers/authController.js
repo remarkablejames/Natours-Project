@@ -1,8 +1,14 @@
 const User = require("../models/userModel");
 
 exports.signup = async (req, res) => {
+  ({ name, email, password, passwordConfirm } = req.body);
   try {
-    const newUser = await User.create(req.body);
+    const newUser = await User.create({
+      name,
+      email,
+      password,
+      passwordConfirm,
+    });
     res.status(201).json({
       status: "success",
       data: {
