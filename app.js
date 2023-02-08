@@ -10,7 +10,14 @@ const userRouter = require("./routes/userRouter");
 // 1) MIDDLEWARES
 app.use(express.json());
 app.use(morgan("dev"));
+app.use((req, res, next) => {
+  console.log("Hello from the middleware");
+  req.requestTime = new Date().toISOString();
+  console.log(req.headers);
+  next();
+});
 
+// 2) ROUTES
 app.use("/api/v1/tours", tourRouter);
 app.use("/api/v1/users", userRouter);
 app.all("*", (req, res, next) => {
