@@ -65,6 +65,9 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
+userSchema.pre("save", function (next) {
+  if (!this.isModified("password") || this.isNew) return next();
+});
 userSchema.methods.correctPassword = async function (
   candidatePassword,
   userPassword
