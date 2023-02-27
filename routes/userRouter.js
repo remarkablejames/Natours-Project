@@ -13,6 +13,9 @@ router
   .route("/updatepassword")
   .patch(authController.protect, authController.updatePassword);
 
+// update user data
+router.patch("/updateme", authController.protect, userController.updateMe);
+
 // restrict access to admin
 router
   .route("/:id")
