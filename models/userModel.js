@@ -58,16 +58,12 @@ userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
 
   this.passwordChangedAt = Date.now() - 1000;
-  console.log("here we are");
-  this.password = await bcrypt.hashSync(this.password, 12);
+  this.password = await bcrypt.hash(this.password, 12);
   this.passwordConfirm = undefined;
 
   next();
 });
 
-userSchema.pre("save", function (next) {
-  if (!this.isModified("password") || this.isNew) return next();
-});
 userSchema.methods.correctPassword = async function (
   candidatePassword,
   userPassword
