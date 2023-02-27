@@ -15,6 +15,7 @@ router
 
 // update user data
 router.patch("/updateme", authController.protect, userController.updateMe);
+router.delete("/deleteme", authController.protect, userController.deleteMe);
 
 // restrict access to admin
 router
