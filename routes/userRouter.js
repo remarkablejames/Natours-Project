@@ -15,16 +15,10 @@ router
 
 // update user data
 router.patch("/updateme", authController.protect, userController.updateMe);
+// delete user
 router.delete("/deleteme", authController.protect, userController.deleteMe);
 
 // restrict access to admin
-router
-  .route("/:id")
-  .get(authController.protect, userController.getUser)
-  .delete(
-    authController.protect,
-    authController.restrictTo("admin"),
-    userController.deleteUser
-  );
+router.route("/:id").get(authController.protect, userController.getUser);
 
 module.exports = router;
