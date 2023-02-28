@@ -121,12 +121,13 @@ tourSchema.pre("save", function (next) {
   next();
 });
 
-// tourSchema.pre("save", async function (next) {
-//   this.guidesPromises = this.guides.map(async (id) => await User.findById(id));
-//   this.guides = await Promise.all(this.guidesPromises);
-//   console.log(this.guide);
-//   next();
-// });
+tourSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "guides",
+    select: "-__v -passwordChangedAt",
+  });
+  next();
+});
 
 // tourSchema.pre('save', function(next) {
 //   console.log('Will save document...');
