@@ -65,4 +65,6 @@ const filterObj = (obj, ...allowedFields) => {
   return newObj;
 };
 
+// do not update passwords with this
+exports.updateUser = factory.updateOne(User);
 exports.deleteUser = factory.deleteOne(User);
