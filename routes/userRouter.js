@@ -3,15 +3,17 @@ const router = express.Router();
 const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
 
-router.route("/").get(authController.protect, userController.getAllUsers);
-router.route("/signup").post(authController.signup);
-router.route("/login").post(authController.login);
+router.get("/", authController.protect, userController.getAllUsers);
+router.post("/signup", authController.signup);
+router.post("/login", authController.login);
 
-router.route("/forgotpassword").post(authController.forgotPassword);
-router.route("/resetpassword/:token").patch(authController.resetPassword);
-router
-  .route("/updatepassword")
-  .patch(authController.protect, authController.updatePassword);
+router.post("/forgotpassword", authController.forgotPassword);
+router.patch("/resetpassword/:token", authController.resetPassword);
+router.patch(
+  "/updatepassword",
+  authController.protect,
+  authController.updatePassword
+);
 
 // update user data
 router.patch("/updateme", authController.protect, userController.updateMe);
