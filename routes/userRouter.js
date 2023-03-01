@@ -21,6 +21,9 @@ router.patch("/updateme", authController.protect, userController.updateMe);
 router.delete("/deleteme", authController.protect, userController.deleteMe);
 
 // restrict access to admin
-router.route("/:id").get(authController.protect, userController.getUser);
+router
+  .route("/:id")
+  .get(authController.protect, userController.getUser)
+  .delete(authController.protect, userController.deleteUser);
 
 module.exports = router;

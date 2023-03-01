@@ -1,6 +1,7 @@
 const User = require("../models/userModel");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
+const factory = require("./handlerFactory");
 
 exports.getAllUsers = catchAsync(async (req, res, next) => {
   // EXECUTE QUERY
@@ -63,3 +64,5 @@ const filterObj = (obj, ...allowedFields) => {
   });
   return newObj;
 };
+
+exports.deleteUser = factory.deleteOne(User);
