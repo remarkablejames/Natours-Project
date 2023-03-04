@@ -9,7 +9,7 @@ header.header
         //-     img.nav__user-img(src="img/user.jpg", alt="user photo")
         //-     span Jonas 
         if user
-            a.nav__el.nav__el--logout(href="/me") Log out
+            a.nav__el.nav__el--logout(href="/logout") Log out
             a.nav__el.nav__el--cta(href="/me")
                 img.nav__user-img(src=`/img/users/${user.photo}`, alt=`${user.name} photo`)
                 span= user.name.split(' ')[0]
