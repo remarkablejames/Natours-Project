@@ -21,6 +21,10 @@ exports.getTour = catchAsync(async (req, res, next) => {
     fields: "review rating user",
   });
 
+  if (!tour) {
+    return next(new AppError("There is no tour with that name.", 404));
+  }
+
   // 2) Build template
   // 3) Render template using data from step 1)
 
@@ -45,5 +49,17 @@ exports.getLoginForm = (req, res) => {
     )
     .render("login", {
       title: "Log into your account",
+    });
+};
+
+exports.getAccount = (req, res) => {
+  res
+    .status(200)
+    .set(
+      "Content-Security-Policy",
+      "default-src 'self' https://*.mapbox.com ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdnjs.cloudflare.com https://api.mapbox.com 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
+    )
+    .render("account", {
+      title: "Your account",
     });
 };
