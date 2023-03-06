@@ -16,6 +16,7 @@ router.patch("/updatepassword", authController.updatePassword);
 router.patch(
   "/updateme",
   userController.uploadUserPhoto,
+  userController.resizeUserPhoto,
   userController.updateMe
 ); // update user data
 // delete user
