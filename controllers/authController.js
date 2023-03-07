@@ -51,7 +51,6 @@ exports.login = catchAsync(async (req, res, next) => {
   if (!user || !(await user.correctPassword(password, user.password))) {
     return next(new AppError("Incorrect email or password", 401));
   }
-  console.log(user);
 
   // 3) If everything ok, send token to client
   createSendToken(user, 200, res);
@@ -92,7 +91,6 @@ exports.protect = catchAsync(async (req, res, next) => {
   }
   // // 2) Verification token
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-  console.log(decoded);
   // // 3) Check if user still exists
   const currentUser = await User.findById(decoded.id);
   if (!currentUser) {
@@ -226,7 +224,6 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 });
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
-  console.log("++++++++++++++++++++++++++++++");
   // 1) Get user from collection
   const user = await User.findById(req.user.id).select("+password");
 

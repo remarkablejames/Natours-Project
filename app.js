@@ -11,6 +11,7 @@ const path = require("path");
 const app = express();
 const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController");
+const compression = require("compression");
 
 // VIEW ENGINE
 app.set("view engine", "pug");
@@ -63,6 +64,7 @@ app.use(
     ],
   })
 );
+app.use(compression());
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   next();

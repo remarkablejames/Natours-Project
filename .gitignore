@@ -131,3 +131,5 @@ dist
 
 .env
 config.env
+.cache/
+.dev-data/
